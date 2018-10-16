@@ -78,7 +78,7 @@
         for (NSMenuItem *subsubItem in subSubitems) {
             NSLog(@"subSubitems:%@", subsubItem.title);
         }
-    }
+    } 
 }
 
 // 菜单有效性验证
