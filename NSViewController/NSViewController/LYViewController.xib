@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="LYViewController">
+            <connections>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oeu-7R-SIw">
+                    <rect key="frame" x="109" y="118" width="81" height="32"/>
+                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CxE-3a-FlY">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QeV-jq-nxD">
+                    <rect key="frame" x="148" y="193" width="81" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Byy-rI-N5U">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <visualEffectView appearanceType="darkAqua" fixedFrame="YES" blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" maskImage="NSBonjour" translatesAutoresizingMaskIntoConstraints="NO" id="XMB-QZ-yH9">
+                    <rect key="frame" x="256" y="72" width="128" height="128"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                </visualEffectView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="oeu-7R-SIw" secondAttribute="trailing" constant="296" id="Ak8-ve-oKq"/>
+                <constraint firstAttribute="bottom" secondItem="oeu-7R-SIw" secondAttribute="bottom" constant="125" id="Bzi-gU-NT7"/>
+                <constraint firstItem="oeu-7R-SIw" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="126" id="p9E-NY-lT8"/>
+                <constraint firstItem="oeu-7R-SIw" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="115" id="pW3-9U-Fee"/>
+            </constraints>
+        </customView>
+    </objects>
+    <resources>
+        <image name="NSBonjour" width="128" height="128"/>
+    </resources>
+</document>
