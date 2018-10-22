@@ -718,7 +718,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView id="PCm-6h-CrN">
+                                                <tableCellView identifier="name" id="PCm-6h-CrN">
                                                     <rect key="frame" x="1" y="1" width="60" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
@@ -751,7 +751,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView id="abw-p3-Gg7">
+                                                <tableCellView identifier="address" id="abw-p3-Gg7">
                                                     <rect key="frame" x="64" y="1" width="60" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
@@ -771,7 +771,7 @@
                                                 </tableCellView>
                                             </prototypeCellViews>
                                         </tableColumn>
-                                        <tableColumn identifier="gender" width="60" minWidth="40" maxWidth="60" id="fH1-uu-8rM">
+                                        <tableColumn identifier="gender" width="100" minWidth="40" maxWidth="100" id="fH1-uu-8rM">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="gender">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -788,23 +788,25 @@
                                             </comboBoxCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView id="Vnw-9i-rTq">
-                                                    <rect key="frame" x="127" y="1" width="60" height="17"/>
+                                                <tableCellView identifier="gender" id="Vnw-9i-rTq">
+                                                    <rect key="frame" x="127" y="1" width="100" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4fW-qM-hgr">
-                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="17"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="uPc-4H-4fK">
+                                                        <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D3Y-UP-nYg">
+                                                            <rect key="frame" x="0.0" y="0.0" width="99" height="26"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <comboBoxCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="zkV-nW-BwT">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                        </textField>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                <objectValues>
+                                                                    <string>Item 1</string>
+                                                                    <string>Item 2</string>
+                                                                    <string>Item 3</string>
+                                                                </objectValues>
+                                                            </comboBoxCell>
+                                                        </comboBox>
                                                     </subviews>
-                                                    <connections>
-                                                        <outlet property="textField" destination="4fW-qM-hgr" id="LkZ-2l-LJq"/>
-                                                    </connections>
                                                 </tableCellView>
                                             </prototypeCellViews>
                                         </tableColumn>
@@ -820,23 +822,19 @@
                                             </buttonCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView id="xcG-kh-MXZ">
-                                                    <rect key="frame" x="190" y="1" width="60" height="17"/>
+                                                <tableCellView identifier="married" id="xcG-kh-MXZ">
+                                                    <rect key="frame" x="230" y="1" width="60" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2wt-WE-1b0">
-                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="17"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Hb9-ni-bjw">
+                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6tw-ne-Pwt">
+                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="8Le-Q4-ppV">
+                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
-                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                        </textField>
+                                                            </buttonCell>
+                                                        </button>
                                                     </subviews>
-                                                    <connections>
-                                                        <outlet property="textField" destination="2wt-WE-1b0" id="AYL-og-tBC"/>
-                                                    </connections>
                                                 </tableCellView>
                                             </prototypeCellViews>
                                         </tableColumn>
