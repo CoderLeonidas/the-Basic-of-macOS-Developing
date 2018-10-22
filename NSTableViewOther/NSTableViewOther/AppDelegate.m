@@ -8,10 +8,12 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate () <NSTableViewDataSource, NSTableViewDelegate>
+@interface AppDelegate () <NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate>
 @property (weak) IBOutlet NSTableView *tableview;
 
 @property (weak) IBOutlet NSWindow *window;
+
+@property (nonatomic, strong) NSMenu *tablemenu;
 @end
 
 @implementation AppDelegate {
@@ -28,7 +30,16 @@
     
     // 添加列表双击action
     [self.tableview setDoubleAction:@selector(tableviewDoubleAction:)];
+    
+    // 添加列表上下文菜单
+    self.tableview.menu = self.tablemenu;
     [self.tableview reloadData];
+}
+
+- (void)menuNeedsUpdate:(NSMenu *)menu {
+    NSInteger clickedRow = [self.tableview clickedRow];
+    NSInteger clickedColumn = self.tableview.clickedColumn;
+    menu.title = [NSString stringWithFormat:@"row:%ld column:%ld", clickedRow, clickedColumn];
 }
 
 
@@ -89,6 +100,15 @@
     NSLog(@"selectedRow = %ld", row);
 }
 
+
+- (NSMenu *)tablemenu {
+    if (nil == _tablemenu) {
+        _tablemenu = [NSMenu  new];
+        _tablemenu.delegate = self;
+    }
+    
+    return _tablemenu;
+}
 
 
 @end
