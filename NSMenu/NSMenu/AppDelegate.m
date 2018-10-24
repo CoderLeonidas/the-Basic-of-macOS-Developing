@@ -64,8 +64,8 @@
     [customMenu addItem:openMenuItem];
     [customMenu addItem:openRecentMenuItem];
     self.window.contentView.menu =customMenu;
-
 }
+
 // 获取app应用的默认菜单
 - (void)getAppDefaultMenu {
     NSMenu *menu = [NSApp menu];

@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#define kDraggingDataTypeXXX @"kDraggingDataTypeXXX"
+
 @interface AppDelegate () <NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate>
 @property (weak) IBOutlet NSTableView *tableview;
 
@@ -17,23 +19,29 @@
 @end
 
 @implementation AppDelegate {
-    NSArray *_datas;
+    NSMutableArray *_datas;
+    
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
-    _datas = @ [
-                @{@"name": @"john", @"address": @"USA", @"gender": @"male", @"married": @ (1) },
-                @{@"name": @"mary", @"address": @"China", @"gender": @" female", @"married": @ (0) },
-                @{@"name": @"park", @"address": @"Japan", @"gender": @"male", @"married": @ (0) },
-                @{@"name": @"Daba", @"address": @"Russia", @"gender": @"female", @"married": @ (1) }];
+    NSArray *data =    @[@{@"name": @"john", @"address": @"USA", @"gender": @"male", @"married": @(1)},
+                @{@"name": @"mary", @"address": @"China", @"gender": @" female", @"married": @(0)},
+                @{@"name": @"park", @"address": @"Japan", @"gender": @"male", @"married": @(0)},
+                @{@"name": @"Daba", @"address": @"Russia", @"gender": @"female", @"married": @(1)}];
+    _datas = [data mutableCopy];
     
     // 添加列表双击action
     [self.tableview setDoubleAction:@selector(tableviewDoubleAction:)];
     
     // 添加列表上下文菜单
     self.tableview.menu = self.tablemenu;
+    [self.tableview registerForDraggedTypes:@[kDraggingDataTypeXXX]];
     [self.tableview reloadData];
+}
+
+- (void)setSort {
+    [self.tableview setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(compare:)]]];
 }
 
 - (void)menuNeedsUpdate:(NSMenu *)menu {
@@ -110,5 +118,33 @@
     return _tablemenu;
 }
 
+
+- (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange:(NSArray<NSSortDescriptor *> *)oldDescriptors {
+    [_datas sortedArrayUsingDescriptors:[tableView sortDescriptors]];
+    [self.tableview reloadData];
+}
+
+#pragma mark - drag & drop
+- (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes requiringSecureCoding:NO error:nil];
+    [pboard declareTypes:@[kDraggingDataTypeXXX] owner:self];
+    [pboard setData:data forType:kDraggingDataTypeXXX];
+    return YES;
+}
+
+- (NSDragOperation)tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation {
+    return NSDragOperationEvery;
+}
+
+- (BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation {
+    NSPasteboard *pboard = info.draggingPasteboard;
+    NSData *data = [pboard dataForType:kDraggingDataTypeXXX];
+    NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSIndexSet class] fromData:data error:nil];
+    NSInteger dragRow = [rowIndexes firstIndex];
+    [_datas exchangeObjectAtIndex:row withObjectAtIndex:dragRow];
+    [self.tableview reloadData];
+    return YES;
+    
+}
 
 @end
